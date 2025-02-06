@@ -1,0 +1,99 @@
+{
+	"name": "crud-electron",
+	"description": "A CRUD application built with Electron and React",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"main": "./electron.cjs",
+	"author": {
+		"name": "Sharif Md. Minhaz",
+		"email": "minhaz.rbs@gmail.com"
+	},
+	"homepage": "./",
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build --base=./",
+		"lint": "eslint .",
+		"preview": "vite preview",
+		"start": "electron-forge start",
+		"package": "electron-forge package",
+		"make": "electron-forge make",
+		"make-win": "electron-forge make --platform=win32 --arch=x64",
+		"electron": "electron ."
+	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.0.3",
+		"better-sqlite3": "^11.8.1",
+		"electron-squirrel-startup": "^1.0.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"tailwindcss": "^4.0.3"
+	},
+	"devDependencies": {
+		"@electron-forge/cli": "^7.6.1",
+		"@electron-forge/maker-deb": "^7.6.1",
+		"@electron-forge/maker-rpm": "^7.6.1",
+		"@electron-forge/maker-squirrel": "^7.6.1",
+		"@electron-forge/maker-zip": "^7.6.1",
+		"@electron-forge/plugin-auto-unpack-natives": "^7.6.1",
+		"@electron-forge/plugin-fuses": "^7.6.1",
+		"@electron/fuses": "^1.8.0",
+		"@eslint/js": "^9.17.0",
+		"@tailwindcss/forms": "^0.5.10",
+		"@tailwindcss/typography": "^0.5.16",
+		"@types/react": "^18.3.18",
+		"@types/react-dom": "^18.3.5",
+		"@vitejs/plugin-react-swc": "^3.5.0",
+		"electron": "^34.0.2",
+		"eslint": "^9.17.0",
+		"eslint-plugin-react": "^7.37.2",
+		"eslint-plugin-react-hooks": "^5.0.0",
+		"eslint-plugin-react-refresh": "^0.4.16",
+		"globals": "^15.14.0",
+		"vite": "^6.0.5"
+	},
+	"build": {
+		"appId": "com.crud.id",
+		"productName": "Crud App",
+		"directories": {
+			"output": "dist"
+		},
+		"files": [
+			"dist/**/*",
+			"images/**/*",
+			"electron.cjs"
+		],
+		"win": {
+			"publisherName": "Crud App",
+			"artifactName": "crud-installer.exe",
+			"icon": "images/list.ico",
+			"publish": [
+				"github"
+			],
+			"target": [
+				{
+					"target": "portable",	
+					"arch": [
+						"x64",
+						"ia32"
+					]
+				}
+			]
+		},
+		"linux": {
+			"icon": "images/list.png",
+			"target": "AppImage",
+			"category": "Business",
+			"maintainer": "Sharif Md. Minhaz <minhaz.rbs@gmail.com>"
+		},
+		"nsis": {
+			"oneClick": false,
+			"perMachine": false,
+			"allowToChangeInstallationDirectory": true,
+			"installerIcon": "images/list.ico",
+			"createDesktopShortcut": true,
+			"createStartMenuShortcut": true
+		}
+	}
+}
